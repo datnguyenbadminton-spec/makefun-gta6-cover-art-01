@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Heat Cover Studio — your photos into GTA-style cover art</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<main class="app">
+  <section class="controls" aria-label="Cover controls">
+    <header>
+      <h1>VICE HEAT</h1>
+      <p class="tagline">Cover Studio — your photos into multi-panel poster art.</p>
+    </header>
+
+    <section class="group">
+      <h2>1 · Photos</h2>
+      <p class="hint">Click a photo to drop it into the selected panel. Your uploads stay on your machine.</p>
+      <div id="photo-tray" class="tray" role="listbox" aria-label="Photos"></div>
+      <label class="upload">Add your photos
+        <input id="photo-upload" type="file" accept="image/*" multiple>
+      </label>
+    </section>
+
+    <section class="group">
+      <h2>2 · Layout</h2>
+      <div id="layout-picker" class="picker" role="group" aria-label="Panel layout"></div>
+    </section>
+
+    <section class="group">
+      <h2>3 · Grade</h2>
+      <div id="grade-picker" class="picker" role="group" aria-label="Colour grade"></div>
+    </section>
+
+    <section class="group">
+      <h2>4 · Words</h2>
+      <label>Title
+        <input id="title-input" type="text" maxlength="24" value="VICE HEAT">
+      </label>
+      <label>Script subtitle
+        <input id="subtitle-input" type="text" maxlength="40" value="Coastline Nights">
+      </label>
+      <label>Tagline
+        <input id="tagline-input" type="text" maxlength="48" value="Summer 2026 • Vice City">
+      </label>
+      <label class="check"><input id="badge-toggle" type="checkbox" checked> Starburst badge</label>
+    </section>
+
+    <section class="group">
+      <h2>5 · Selected panel</h2>
+      <p class="hint">Click a panel in the preview, drag to pan the photo, scroll to zoom.</p>
+      <label>Zoom
+        <input id="zoom-slider" type="range" min="1" max="3" step="0.05" value="1">
+      </label>
+      <div class="row">
+        <button id="fill-all" type="button">Fill all panels</button>
+        <button id="reset-crop" type="button">Reset crop</button>
+      </div>
+    </section>
+
+    <section class="group">
+      <h2>6 · Export</h2>
+      <div id="size-picker" class="picker" role="group" aria-label="Post size"></div>
+      <div class="row">
+        <button id="export-current" type="button" class="primary">Export this size</button>
+        <button id="export-all" type="button">Export all 3</button>
+      </div>
+      <p id="status" role="status">Loading…</p>
+    </section>
+
+    <footer>
+      <p>Offline static app. Photos are read on your machine, never uploaded. Fonts are SIL OFL (Anton, Pacifico, Oswald) shipped under <code>fonts/</code>. Sample photos are AI-made; no Rockstar artwork, logo or font is used.</p>
+    </footer>
+  </section>
+
+  <section class="stage" aria-label="Live preview">
+    <canvas id="preview" width="960" height="540" aria-label="The cover, live preview"></canvas>
+    <div id="export-stage" class="export-stage" hidden>
+      <canvas id="export-canvas" aria-label="The exported cover"></canvas>
+      <p id="export-caption"></p>
+    </div>
+  </section>
+</main>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
